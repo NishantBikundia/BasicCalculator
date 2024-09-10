@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <!-- Link to the external stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <!-- Main Calculator Container -->
+    <div class="calculator-container">
+        <h1>Basic Calculator</h1>
+
+        <!-- Calculator form -->
+        <form action="/calculate" method="POST">
+            <!-- Input fields for numbers -->
+            <input type="number" name="num1" placeholder="Enter first number" required>
+            <input type="number" name="num2" placeholder="Enter second number" required>
+
+            <!-- Dropdown for selecting operation -->
+            <select name="operation" required>
+                <option value="" disabled selected>Select operation</option>
+                <option value="add">Addition (+)</option>
+                <option value="subtract">Subtraction (-)</option>
+                <option value="multiply">Multiplication (×)</option>
+                <option value="divide">Division (÷)</option>
+            </select>
+
+            <!-- Submit button to calculate -->
+            <button type="submit">Calculate</button>
+        </form>
+
+        <!-- Display result or error if available -->
+        {% if result is not none %}
+            <div class="result">Result: {{ result }}</div>
+        {% elif error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+    </div>
+
+</body>
+</html>

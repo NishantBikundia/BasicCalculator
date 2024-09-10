@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculation Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="calculator-container">
+        <h1>Calculation Result</h1>
+
+        {% if result is not none %}
+            <div class="result">The result is: {{ result }}</div>
+        {% elif error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+
+        <form action="/" method="GET">
+            <button type="submit">Perform Another Calculation</button>
+        </form>
+    </div>
+
+</body>
+</html>
